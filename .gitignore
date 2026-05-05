@@ -1,0 +1,9 @@
+.env
+*.mp4
+*.mov
+*.m4a
+*.webm
+out/
+media/
+__pycache__/
+.DS_Store
