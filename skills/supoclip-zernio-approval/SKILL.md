@@ -35,11 +35,11 @@ Create a vertical short from a source video, send the user a rendered sample + c
 
 ## Layout Planning + Crop Rules
 
-Before rendering, create a simple layout plan for the whole clip. Do **not** assume one transition.
+Before rendering, create a simple layout plan for the whole clip. Do **not** assume one transition. The worker must actually inspect/watch enough of the clip to understand the visual structure before choosing layouts.
 
 Required workflow:
 
-1. Sample/inspect the source across the full selected clip, at minimum every 5-10 seconds plus all obvious visual transitions.
+1. Sample/inspect the source across the full selected clip, at minimum every 5-10 seconds plus all obvious visual transitions. When available, watch/scrub the clip or generated frame sequence rather than relying only on automated detection.
 2. Classify each time range as one of:
    - `talking_head_fullscreen` — Dan/video subject is full screen with no important screen share;
    - `screen_share_split` — Dan + browser/chart/article/dashboard/slides are visible;
@@ -55,7 +55,7 @@ Crop/layout rules:
 - `talking_head_fullscreen` must crop-to-fill 9:16. Do not leave black bars or tiny landscape video floating inside vertical canvas.
 - `broll_fullscreen` must crop-to-fill 9:16 unless the full frame is essential.
 - Full 9:16 output from 1920x1080 source: crop approximately `608x1080` around detected face/subject, then scale.
-- `screen_share_split` must preserve both Dan and the screen content. Use stacked layout unless there is a clearly better manual layout.
+- `screen_share_split` must **always** use stacked layout. No picture-in-picture, no face-only crop, no decorative-screen judgment. If screen share is active, stacked is the default and expected output.
 - Stacked halves are 720x640 = 9:8. For market videos with Dan left / screen right:
   - top face crop: `x=0, y=114, w=960, h=853`;
   - bottom screen crop: `x=960, y=114, w=960, h=853`;
