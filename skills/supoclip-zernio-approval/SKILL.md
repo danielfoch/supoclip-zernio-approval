@@ -187,6 +187,20 @@ If the channel supports buttons, include:
 - Edit caption
 - Reject
 
+## Default Publishing Targets
+
+After Dan approves a rendered video/SupoClip, publish video posts to the full video stack unless he specifies otherwise:
+
+- LinkedIn
+- X/Twitter
+- Threads
+- Facebook
+- Instagram Reels
+- TikTok
+- YouTube Shorts
+
+For text-only or image posts, default remains the lighter social stack used in the specific workflow/request; do not automatically add Instagram, TikTok, or YouTube Shorts for non-video posts unless Dan explicitly asks.
+
 ## Zernio Publish
 
 After approval only:
